@@ -28,7 +28,7 @@ public class OrderDaoTest {
 		
 	}
 	
-	private static void updateOrderBookTest() {
+	private static void updateOrderBookTest(OrderVo vo) {
 		
 	}
 	

@@ -13,7 +13,6 @@ public class Book_OrderDaoTest {
 	}
 	
 	private static void insertTest() {
-		System.out.println("insert test-----------------");
 		Book_OrderDao dao = new Book_OrderDao();
 		
 		Book_OrderVo vo1 = new Book_OrderVo();
@@ -26,13 +25,17 @@ public class Book_OrderDaoTest {
 	
 	private static void deleteTest() {
 		new Book_OrderDao().delete();
+		
+		System.out.println("delete 완료");
 	}
 	
 	private static void selectTest() {
-		System.out.println("select test-----------------");
 		Book_OrderDao dao = new Book_OrderDao();
 		
 		List<Book_OrderVo> list = dao.getList();
+		
+		System.out.println("Table : Book_Order");
+		System.out.println("");
 		
 		for(Book_OrderVo l : list) {
 			System.out.println("[주문 번호 : " + l.getOrder_no() + "] [도서 번호 : " + l.getBook_no() + "] [주문 수량 : " + l.getAmount() + "]");

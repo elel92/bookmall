@@ -24,6 +24,14 @@ public class OrderDaoTest {
 		System.out.println("Book 테이블, User 테이블 확인");
 	}
 	
+	private static void updateBookAmount() {
+		
+	}
+	
+	private static void updateOrderBookTest() {
+		
+	}
+	
 	private static void insertTest() {
 		OrderDao dao = new OrderDao();
 		

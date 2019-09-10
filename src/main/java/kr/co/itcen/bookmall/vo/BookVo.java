@@ -5,13 +5,13 @@ public class BookVo {
 	private String name;
 	private int price;
 	private int category_no;
-	private int amount;
+	private int stock;
 	
-	public int getAmount() {
-		return amount;
+	public int getStock() {
+		return stock;
 	}
-	public void setAmount(int amount) {
-		this.amount = amount;
+	public void setStock(int stock) {
+		this.stock = stock;
 	}
 	public int getNo() {
 		return no;

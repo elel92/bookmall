@@ -43,8 +43,8 @@ public class BookDao {
 			pstmt.setInt(1, vo.getNo());
 			pstmt.setString(2, vo.getName());
 			pstmt.setInt(3, vo.getPrice());
-			pstmt.setInt(4, vo.getCategory_no());
-			pstmt.setInt(5, vo.getAmount());
+			pstmt.setInt(4, vo.getStock());
+			pstmt.setInt(5, vo.getCategory_no());
 			
 			int count = pstmt.executeUpdate();
 			
@@ -98,7 +98,7 @@ public class BookDao {
 		try {
 			connection = getConnection();
 			
-			String sql = "select no, name, price, category_no, amount from book order by no asc";
+			String sql = "select no, name, price, stock, category_no from book order by no asc";
 			pstmt = connection.prepareStatement(sql);
 			
 			rs = pstmt.executeQuery();
@@ -107,16 +107,16 @@ public class BookDao {
 				int no = rs.getInt(1);
 				String name = rs.getString(2);
 				int price = rs.getInt(3);
-				int category_no = rs.getInt(4);
-				int amount = rs.getInt(5);
+				int amount = rs.getInt(4);
+				int category_no = rs.getInt(5);
 				
 				BookVo vo = new BookVo();
 				
 				vo.setNo(no);
 				vo.setName(name);
 				vo.setPrice(price);
+				vo.setStock(amount);
 				vo.setCategory_no(category_no);
-				vo.setAmount(amount);
 				
 				result.add(vo);
 			}

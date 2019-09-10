@@ -14,28 +14,52 @@ public class CategoryDaoTest {
 	}
 	
 	private static void insertTest() {
-		System.out.println("insert test-----------------");
 		CategoryDao dao = new CategoryDao();
 		
 		CategoryVo vo1 = new CategoryVo();
 		
-		vo1.setNo(1);
-		vo1.setName("판타지");
+		vo1.setNo(11);
+		vo1.setName("소설");
 		dao.insert(vo1);
+		
+		CategoryVo vo2 = new CategoryVo();
+		
+		vo2.setNo(12);
+		vo2.setName("에세이");
+		dao.insert(vo2);
+		
+		CategoryVo vo3 = new CategoryVo();
+		
+		vo3.setNo(13);
+		vo3.setName("수험서");
+		dao.insert(vo3);
+		
+		CategoryVo vo4 = new CategoryVo();
+		
+		vo4.setNo(14);
+		vo4.setName("여행");
+		dao.insert(vo4);
+		
+		System.out.println("insert 완료");
 	}
 	
 	private static void deleteTest() {
 		new CategoryDao().delete();
+		
+		System.out.println("delete 완료");
 	}
 	
-	private static void selectTest() {
-		System.out.println("select test-----------------");
+	public static void selectTest() {
 		CategoryDao dao = new CategoryDao();
 		
 		List<CategoryVo> list = dao.getList();
 		
+		System.out.println("Table : Category");
+		System.out.println("");
+		
 		for(CategoryVo l : list) {
-			System.out.println(l.getNo() + ", " + l.getName());
+			System.out.println("[카테고리 번호 : " + l.getNo() + "] [카테고리 이름 : " + l.getName() + "]");
+			System.out.println("");
 		}
 	}
 }

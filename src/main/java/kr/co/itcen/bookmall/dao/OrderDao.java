@@ -37,13 +37,14 @@ public class OrderDao {
 		try {
 			connection = getConnection();
 			
-			String sql = "insert into bookmall.order values(?, ?, ?, ?)";
+			String sql = "insert into bookmall.order values(?, ?, ?, ?, ?)";
 			pstmt = connection.prepareStatement(sql);
 			
 			pstmt.setInt(1, vo.getNo());
 			pstmt.setInt(2, vo.getPayment());
 			pstmt.setString(3, vo.getAddress());
-			pstmt.setInt(4, vo.getUser_no());
+			pstmt.setInt(4, vo.getAmount());
+			pstmt.setInt(5, vo.getUser_no());
 			
 			int count = pstmt.executeUpdate();
 			
@@ -97,7 +98,7 @@ public class OrderDao {
 		try {
 			connection = getConnection();
 			
-			String sql = "select no, payment, address, user_no from bookmall.order order by no asc";
+			String sql = "select no, payment, address, amount, user_no from bookmall.order order by no asc";
 			pstmt = connection.prepareStatement(sql);
 			
 			rs = pstmt.executeQuery();
@@ -106,13 +107,15 @@ public class OrderDao {
 				int no = rs.getInt(1);
 				int payment = rs.getInt(2);
 				String address = rs.getString(3);
-				int user_no = rs.getInt(4);
+				int amount = rs.getInt(4);
+				int user_no = rs.getInt(5);
 				
 				OrderVo vo = new OrderVo();
 				
 				vo.setNo(no);
 				vo.setPayment(payment);
 				vo.setAddress(address);
+				vo.setAmount(amount);
 				vo.setUser_no(user_no);
 				
 				result.add(vo);

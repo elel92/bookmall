@@ -4,8 +4,15 @@ public class OrderVo {
 	private int no;
 	private int payment;
 	private String address;
+	private int amount;
 	private int user_no;
 	
+	public int getAmount() {
+		return amount;
+	}
+	public void setAmount(int amount) {
+		this.amount = amount;
+	}
 	public int getNo() {
 		return no;
 	}

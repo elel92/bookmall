@@ -14,7 +14,6 @@ public class UserDaoTest {
 	}
 	
 	private static void insertTest() {
-		System.out.println("insert test-----------------");
 		UserDao dao = new UserDao();
 		
 		UserVo vo1 = new UserVo();
@@ -26,20 +25,36 @@ public class UserDaoTest {
 		vo1.setPassword("elel92");
 		
 		dao.insert(vo1);
+		
+		UserVo vo2 = new UserVo();
+		
+		vo2.setNo(2);
+		vo2.setName("땡땡떙");
+		vo2.setNumber("01011112222");
+		vo2.setEmail("rkdalsghek@naver.com");
+		vo2.setPassword("alsals92");
+		
+		dao.insert(vo2);
+		System.out.println("insert 완료");
 	}
 	
-	private static void selectTest() {
-		System.out.println("select test-----------------");
+	public static void selectTest() {
 		UserDao dao = new UserDao();
 		
 		List<UserVo> list = dao.getList();
 		
+		System.out.println("Table : User");
+		System.out.println("");
+		
 		for(UserVo l : list) {
-			System.out.println(l.getNo() + ", " + l.getName() + ", " + l.getNumber() + "," + l.getEmail());
+			System.out.println("[회원 번호 : " + l.getNo() + "] [성명 : " + l.getName() + "] [연락처 : " + l.getNumber() + "] [이메일 : " + l.getEmail() + "]");
+			System.out.println("");
 		}
 	}
 	
 	private static void deleteTest() {
 		new UserDao().delete();
+		
+		System.out.println("delete 완료");
 	}
 }

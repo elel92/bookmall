@@ -54,6 +54,14 @@ public class CartDaoTest {
 		System.out.println("delete 완료");
 	}
 	
+	public static List<CartVo> select(int no) {
+		CartDao dao = new CartDao();
+		
+		List<CartVo> list = dao.getList();
+		
+		return list;
+	}
+	
 	public static void selectTest() {
 		CartDao dao = new CartDao();
 		

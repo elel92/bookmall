@@ -89,6 +89,49 @@ public class CartDao {
 		}
 	}
 	
+	public CartVo getSelect(int user_no) {
+		CartVo result = null;
+		Connection connection = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			connection = getConnection();
+			
+			String sql = "select amount, price, book_no from cart where user_no = ?";
+			pstmt = connection.prepareStatement(sql);
+			pstmt.setInt(1, user_no);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				int amount = rs.getInt(1);
+				int price = rs.getInt(2);
+				int book_no = rs.getInt(3);
+				
+				CartVo vo = new CartVo();
+				
+				vo.setAmount(amount);
+				vo.setPrice(price);
+				vo.setBook_no(book_no);
+				
+				result = vo;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(rs != null) rs.close();
+				if(pstmt != null) pstmt.close();
+				if(connection != null) connection.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return result;
+	}
+	
 	public List<CartVo> getList() {
 		List<CartVo> result = new ArrayList<CartVo>();
 		Connection connection = null;

@@ -27,6 +27,17 @@ public class UserDao {
 		return connection;
 	}
 	
+	public UserVo user_data(String name, String number, String email, String password) {
+		UserVo vo = new UserVo();
+		
+		vo.setName(name);
+		vo.setNumber(number);
+		vo.setEmail(email);
+		vo.setPassword(password);
+		
+		return vo;
+	}
+	
 	public boolean insert(UserVo vo) {
 		boolean result = false;
 		Connection connection = null;
@@ -37,14 +48,13 @@ public class UserDao {
 		try {
 			connection = getConnection();
 			
-			String sql = "insert into user values(?, ?, ?, ?, ?)";
+			String sql = "insert into user(name, number, email, password) values (?, ?, ?, ?)";
 			pstmt = connection.prepareStatement(sql);
 			
-			pstmt.setInt(1, vo.getNo());
-			pstmt.setString(2, vo.getName());
-			pstmt.setString(3, vo.getNumber());
-			pstmt.setString(4, vo.getEmail());
-			pstmt.setString(5, vo.getPassword());
+			pstmt.setString(1, vo.getName());
+			pstmt.setString(2, vo.getNumber());
+			pstmt.setString(3, vo.getEmail());
+			pstmt.setString(4, vo.getPassword());
 			
 			int count = pstmt.executeUpdate();
 			

@@ -27,6 +27,17 @@ public class CartDao {
 		return connection;
 	}
 	
+	public CartVo cart_data(int amount, int price, int book_no, int user_no) {
+		CartVo vo = new CartVo();
+		
+		vo.setAmount(amount);
+		vo.setPrice(price);
+		vo.setBook_no(book_no);
+		vo.setUser_no(user_no);
+		
+		return vo;
+	}
+	
 	public boolean insert(CartVo vo) {
 		boolean result = false;
 		Connection connection = null;
@@ -37,14 +48,13 @@ public class CartDao {
 		try {
 			connection = getConnection();
 			
-			String sql = "insert into cart values(?, ?, ?, ?, ?)";
+			String sql = "insert into cart(amount, price, book_no, user_no) values(?, ?, ?, ?)";
 			pstmt = connection.prepareStatement(sql);
 			
-			pstmt.setInt(1, vo.getNo());
-			pstmt.setInt(2, vo.getAmount());
-			pstmt.setInt(3, vo.getPrice());
+			pstmt.setInt(1, vo.getAmount());
+			pstmt.setInt(2, vo.getPrice());
+			pstmt.setInt(3, vo.getBook_no());
 			pstmt.setInt(4, vo.getUser_no());
-			pstmt.setInt(5, vo.getUser_no());
 			
 			int count = pstmt.executeUpdate();
 			

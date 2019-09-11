@@ -9,6 +9,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import kr.co.itcen.bookmall.vo.CartVo;
 import kr.co.itcen.bookmall.vo.OrderVo;
 
 public class OrderDao {
@@ -25,6 +26,18 @@ public class OrderDao {
 		}
 		
 		return connection;
+	}
+	
+	public OrderVo order_date(int user_no, String addr) {
+		OrderVo vo = new OrderVo();
+		CartVo c_vo = new CartDao().getSelect(user_no);
+		vo.setNo(c_vo.getNo());
+		vo.setPayment(c_vo.getPrice());
+		vo.setAddress(addr);
+		vo.setAmount(c_vo.getAmount());
+		vo.setUser_no(user_no);
+
+		return vo;
 	}
 	
 	public boolean insert(OrderVo vo) {
@@ -49,6 +62,10 @@ public class OrderDao {
 			int count = pstmt.executeUpdate();
 			
 			result = (count == 1);
+			
+			CartVo c_vo = new CartDao().getSelect(vo.getUser_no());
+			new BookDao().update_stock(c_vo.getBook_no(), c_vo.getAmount());
+			new Book_OrderDao().insertBook_Order(vo.getUser_no());
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
@@ -61,6 +78,8 @@ public class OrderDao {
 				e.printStackTrace();
 			}
 		}
+		
+		
 		
 		return result;
 	}

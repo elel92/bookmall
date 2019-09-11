@@ -18,26 +18,22 @@ public class CategoryDaoTest {
 		
 		CategoryVo vo1 = new CategoryVo();
 		
-		vo1.setNo(11);
 		vo1.setName("소설");
 		dao.insert(vo1);
 		
 		CategoryVo vo2 = new CategoryVo();
 		
-		vo2.setNo(12);
 		vo2.setName("에세이");
 		dao.insert(vo2);
 		
 		CategoryVo vo3 = new CategoryVo();
 		
-		vo3.setNo(13);
 		vo3.setName("수험서");
 		dao.insert(vo3);
 		
 		CategoryVo vo4 = new CategoryVo();
 		
-		vo4.setNo(14);
-		vo4.setName("여행");
+		vo4.setName("만화");
 		dao.insert(vo4);
 		
 		System.out.println("insert 완료");

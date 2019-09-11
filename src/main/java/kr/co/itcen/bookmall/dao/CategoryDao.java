@@ -27,6 +27,14 @@ public class CategoryDao {
 		return connection;
 	}
 	
+	public CategoryVo category_Data(String name) {
+		CategoryVo vo = new CategoryVo();
+		
+		vo.setName(name);
+		
+		return vo;
+	}
+	
 	public boolean insert(CategoryVo vo) {
 		boolean result = false;
 		Connection connection = null;
@@ -37,11 +45,10 @@ public class CategoryDao {
 		try {
 			connection = getConnection();
 			
-			String sql = "insert into category values(?, ?)";
+			String sql = "insert into category(name) values(?)";
 			pstmt = connection.prepareStatement(sql);
 			
-			pstmt.setInt(1, vo.getNo());
-			pstmt.setString(2, vo.getName());
+			pstmt.setString(1, vo.getName());
 			
 			int count = pstmt.executeUpdate();
 			

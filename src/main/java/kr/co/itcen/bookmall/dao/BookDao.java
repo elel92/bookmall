@@ -27,6 +27,17 @@ public class BookDao {
 		return connection;
 	}
 	
+	public BookVo book_data(String name, int price, int stock, int category_no) {
+		BookVo vo = new BookVo();
+		
+		vo.setName(name);
+		vo.setPrice(price);
+		vo.setStock(stock);
+		vo.setCategory_no(category_no);
+		
+		return vo;
+	}
+	
 	public boolean insert(BookVo vo) {
 		boolean result = false;
 		Connection connection = null;
@@ -37,14 +48,13 @@ public class BookDao {
 		try {
 			connection = getConnection();
 			
-			String sql = "insert into book values(?, ?, ?, ?, ?)";
+			String sql = "insert into book(name, price, stock, category_no) values (?, ?, ?, ?)";
 			pstmt = connection.prepareStatement(sql);
 			
-			pstmt.setInt(1, vo.getNo());
-			pstmt.setString(2, vo.getName());
-			pstmt.setInt(3, vo.getPrice());
-			pstmt.setInt(4, vo.getStock());
-			pstmt.setInt(5, vo.getCategory_no());
+			pstmt.setString(1, vo.getName());
+			pstmt.setInt(2, vo.getPrice());
+			pstmt.setInt(3, vo.getStock());
+			pstmt.setInt(4, vo.getCategory_no());
 			
 			int count = pstmt.executeUpdate();
 			

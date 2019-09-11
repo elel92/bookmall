@@ -8,7 +8,7 @@ import kr.co.itcen.bookmall.vo.CartVo;
 public class CartDaoTest {
 
 	public static void main(String[] args) {
-		ident();
+		//ident();
 		//insertTest();
 		selectTest();
 		//deleteTest();
@@ -29,7 +29,6 @@ public class CartDaoTest {
 		
 		CartVo vo1 = new CartVo();
 		
-		vo1.setNo(1);
 		vo1.setAmount(1);
 		vo1.setPrice(12000);
 		vo1.setBook_no(1);
@@ -38,7 +37,6 @@ public class CartDaoTest {
 		
 		CartVo vo2 = new CartVo();
 		
-		vo2.setNo(2);
 		vo2.setAmount(3);
 		vo2.setPrice(36000);
 		vo2.setBook_no(2);

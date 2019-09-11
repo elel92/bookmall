@@ -14,8 +14,8 @@ public class OrderDaoTest {
 
 	public static void main(String[] args) {
 		//ident();
-		//insertTest();
-		//selectTest();
+		insertTest();
+		selectTest();
 		//deleteTest();
 	}
 	

@@ -29,7 +29,7 @@ public class Book_OrderDaoTest {
 		System.out.println("delete 완료");
 	}
 	
-	private static void selectTest() {
+	public static void selectTest() {
 		Book_OrderDao dao = new Book_OrderDao();
 		
 		List<Book_OrderVo> list = dao.getList();

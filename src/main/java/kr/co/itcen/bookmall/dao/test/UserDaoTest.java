@@ -18,7 +18,6 @@ public class UserDaoTest {
 		
 		UserVo vo1 = new UserVo();
 		
-		vo1.setNo(1);
 		vo1.setName("강민호");
 		vo1.setNumber("01051035912");
 		vo1.setEmail("elsin92@gmail.com");
@@ -28,7 +27,6 @@ public class UserDaoTest {
 		
 		UserVo vo2 = new UserVo();
 		
-		vo2.setNo(2);
 		vo2.setName("땡땡떙");
 		vo2.setNumber("01011112222");
 		vo2.setEmail("rkdalsghek@naver.com");

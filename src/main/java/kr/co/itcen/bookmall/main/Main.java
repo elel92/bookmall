@@ -1,6 +1,7 @@
 package kr.co.itcen.bookmall.main;
 
 import kr.co.itcen.bookmall.dao.CartDao;
+import kr.co.itcen.bookmall.dao.OrderDao;
 import kr.co.itcen.bookmall.dao.test.BookDaoTest;
 import kr.co.itcen.bookmall.dao.test.Book_OrderDaoTest;
 import kr.co.itcen.bookmall.dao.test.CartDaoTest;
@@ -44,6 +45,6 @@ public class Main {
 		//new CartDao().insert(new CartDao().cart_data(amount, price, book_no, user_no));
 		
 		//주문 테이블
-		
+		new OrderDao().insert(new OrderDao().order_date(1, "서울시 강남"));
 	}
 }

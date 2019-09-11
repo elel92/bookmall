@@ -1,10 +1,17 @@
 package kr.co.itcen.bookmall.vo;
 
 public class Book_OrderVo {
+	private int no;
 	private int order_no;
 	private int book_no;
 	private int amount;
 	
+	public int getNo() {
+		return no;
+	}
+	public void setNo(int no) {
+		this.no = no;
+	}
 	public int getOrder_no() {
 		return order_no;
 	}

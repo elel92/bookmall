@@ -98,19 +98,21 @@ public class CartDao {
 		try {
 			connection = getConnection();
 			
-			String sql = "select amount, price, book_no from cart where user_no = ?";
+			String sql = "select no, amount, price, book_no from cart where user_no = ?";
 			pstmt = connection.prepareStatement(sql);
 			pstmt.setInt(1, user_no);
 			
 			rs = pstmt.executeQuery();
 			
 			if(rs.next()) {
-				int amount = rs.getInt(1);
-				int price = rs.getInt(2);
-				int book_no = rs.getInt(3);
+				int no = rs.getInt(1);
+				int amount = rs.getInt(2);
+				int price = rs.getInt(3);
+				int book_no = rs.getInt(4);
 				
 				CartVo vo = new CartVo();
 				
+				vo.setNo(no);
 				vo.setAmount(amount);
 				vo.setPrice(price);
 				vo.setBook_no(book_no);

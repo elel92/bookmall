@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import kr.co.itcen.bookmall.vo.Book_OrderVo;
+import kr.co.itcen.bookmall.vo.CartVo;
 
 public class Book_OrderDao {
 	private Connection getConnection() throws SQLException {
@@ -37,12 +38,12 @@ public class Book_OrderDao {
 		try {
 			connection = getConnection();
 			
-			String sql = "insert into book_order values(?, ?, ?)";
+			String sql = "insert into book_order(amount, book_no, order_no) values(?, ?, ?)";
 			pstmt = connection.prepareStatement(sql);
 			
-			pstmt.setInt(1, vo.getOrder_no());
+			pstmt.setInt(1, vo.getAmount());
 			pstmt.setInt(2, vo.getBook_no());
-			pstmt.setInt(3, vo.getAmount());
+			pstmt.setInt(3, vo.getOrder_no());
 			
 			int count = pstmt.executeUpdate();
 			
@@ -97,18 +98,20 @@ public class Book_OrderDao {
 		try {
 			connection = getConnection();
 			
-			String sql = "select order_no, book_no, amount from book_order order by order_no asc";
+			String sql = "select no, order_no, book_no, amount from book_order order by order_no asc";
 			pstmt = connection.prepareStatement(sql);
 			
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()) {
-				int order_no = rs.getInt(1);
-				int book_no = rs.getInt(2);
-				int amount = rs.getInt(3);
+				int no = rs.getInt(1);
+				int order_no = rs.getInt(2);
+				int book_no = rs.getInt(3);
+				int amount = rs.getInt(4);
 				
 				Book_OrderVo vo = new Book_OrderVo();
 				
+				vo.setNo(no);
 				vo.setOrder_no(order_no);
 				vo.setBook_no(book_no);
 				vo.setAmount(amount);
@@ -128,5 +131,15 @@ public class Book_OrderDao {
 		}
 		
 		return result;
+	}
+	
+	public void insertBook_Order(int user_no) {
+		CartVo c_vo = new CartDao().getSelect(user_no);
+		
+		Book_OrderVo b_oVo = new Book_OrderVo();
+		b_oVo.setBook_no(c_vo.getBook_no());
+		b_oVo.setAmount(c_vo.getAmount());
+		b_oVo.setOrder_no(c_vo.getNo());
+		new Book_OrderDao().insert(b_oVo);
 	}
 }

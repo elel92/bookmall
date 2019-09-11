@@ -89,6 +89,47 @@ public class BookDao {
 		}
 	}
 	
+	public void update_stock(int book_no, int amount) {
+		Connection connection = null;
+		PreparedStatement pstmt = null;
+		Statement stmt = null;
+		ResultSet rs = null;
+		
+		try {
+			connection = getConnection();
+			
+			String sql = "select stock from book where no = ?";
+			pstmt = connection.prepareStatement(sql);
+			
+			pstmt.setInt(1, book_no);
+			
+			rs = pstmt.executeQuery();
+			int book_stock = 0;
+			
+			if(rs.next()) {
+				book_stock = rs.getInt(1);
+			}
+			
+			sql = "update book set stock = ? where no = ?";
+			pstmt = connection.prepareStatement(sql);
+			pstmt.setInt(1, book_stock - amount);
+			pstmt.setInt(2, book_no);
+			pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(rs != null) rs.close();
+				if(stmt != null) stmt.close();
+				if(pstmt != null) pstmt.close();
+				if(connection != null) connection.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+	
 	public List<BookVo> getList() {
 		List<BookVo> result = new ArrayList<BookVo>();
 		Connection connection = null;

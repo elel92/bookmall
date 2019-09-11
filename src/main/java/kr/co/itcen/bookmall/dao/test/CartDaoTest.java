@@ -8,7 +8,7 @@ import kr.co.itcen.bookmall.vo.CartVo;
 public class CartDaoTest {
 
 	public static void main(String[] args) {
-		//ident();
+		ident();
 		//insertTest();
 		selectTest();
 		//deleteTest();

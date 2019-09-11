@@ -8,8 +8,8 @@ import kr.co.itcen.bookmall.vo.Book_OrderVo;
 public class Book_OrderDaoTest {
 	public static void main(String[] args) {
 		//insertTest();
-		selectTest();
-		//deleteTest();
+		//selectTest();
+		deleteTest();
 	}
 	
 	private static void insertTest() {
@@ -38,7 +38,7 @@ public class Book_OrderDaoTest {
 		System.out.println("");
 		
 		for(Book_OrderVo l : list) {
-			System.out.println("[주문 번호 : " + l.getOrder_no() + "] [도서 번호 : " + l.getBook_no() + "] [주문 수량 : " + l.getAmount() + "]");
+			System.out.println("[번호 : " + l.getNo() + "] [주문 번호 : " + l.getOrder_no() + "] [도서 번호 : " + l.getBook_no() + "] [주문 수량 : " + l.getAmount() + "]");
 		}
 	}
 }

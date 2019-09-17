@@ -42,9 +42,9 @@ public class Main {
 		//new UserDao().insert(new UserDao().user_data("임꺽정", "01033332222", "elel92@nate.com", "1234"));
 		
 		//카트 테이블
-		//new CartDao().insert(new CartDao().cart_data(amount, price, book_no, user_no));
+		//new CartDao().insert(new CartDao().cart_data(3, 36000, 1, 2));
 		
 		//주문 테이블
-		new OrderDao().insert(new OrderDao().order_date(1, "서울시 강남"));
+		//new OrderDao().insert(new OrderDao().order_date(1, "서울시 강남"));
 	}
 }
